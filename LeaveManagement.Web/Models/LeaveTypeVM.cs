@@ -12,7 +12,6 @@ public class LeaveTypeVM
 
     [Display(Name = "Default Number Of Days")]
     [Required]
-    [Range(1, 25, ErrorMessage = "Please enter a valid number")]
+    [Range(1, 25, ErrorMessage = "Please Enter A Valid Number")]
     public int DefaultDays { get; set; }
 }
-

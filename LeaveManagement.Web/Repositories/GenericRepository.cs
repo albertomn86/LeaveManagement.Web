@@ -28,14 +28,14 @@ namespace LeaveManagement.Web.Repositories
 
         public async Task DeleteAsync(int id)
         {
-            var entity = await context.Set<T>().FindAsync(id);
+            var entity = await GetAsync(id);
             context.Set<T>().Remove(entity);
             await context.SaveChangesAsync();
         }
 
         public async Task<bool> Exists(int id)
         {
-            var entity = GetAsync(id);
+            var entity = await GetAsync(id);
             return entity != null;
         }
 
@@ -46,14 +46,15 @@ namespace LeaveManagement.Web.Repositories
 
         public async Task<T?> GetAsync(int? id)
         {
-            if (id == null) return null;
-
+            if (id == null)
+            {
+                return null;
+            }
             return await context.Set<T>().FindAsync(id);
         }
 
         public async Task UpdateAsync(T entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
             context.Update(entity);
             await context.SaveChangesAsync();
         }

@@ -4,21 +4,50 @@
 
 namespace LeaveManagement.Web.Data.Migrations
 {
-    public partial class AddingPeriodAllocation : Migration
+    public partial class AddingPeriodToAllocation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "EmployeddId",
+                name: "EmployeedId",
+                table: "LeaveAllocations",
+                newName: "EmployeeId");
+
+            migrationBuilder.UpdateData(
+                table: "AspNetRoles",
+                keyColumn: "Id",
+                keyValue: "5d17e2d8-e406-4dcc-964e-0bc47c803830",
+                column: "ConcurrencyStamp",
+                value: "2a59a32c-39dc-4fb4-9ae6-12949d53ff5c");
+
+            migrationBuilder.UpdateData(
+                table: "AspNetRoles",
+                keyColumn: "Id",
+                keyValue: "8d17e4d8-e409-4dcb-964e-0bc47dd03830",
+                column: "ConcurrencyStamp",
+                value: "4de184f7-5cda-4050-aa9e-04ab227c5936");
+
+            migrationBuilder.UpdateData(
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "8d17e2d8-e406-4dcb-964e-0bc47c803830",
+                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { "f5d0dfbb-9a73-4c0c-920c-00c1a698ca9f", "AQAAAAEAACcQAAAAECO3jrwqwOTJug16g6KgUPK4Da38kQoCGbTg+QNo6+hKWqIMiDK9fNl1yjjXV3105Q==", "dc06fa48-b989-4a2b-9df1-a4c60161795e" });
+
+            migrationBuilder.UpdateData(
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "8d17e2d8-e406-4dcb-caac-0bc47c803830",
+                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { "3e7cdeec-26d3-4c1f-9eb5-9c44899f8706", "AQAAAAEAACcQAAAAEBLoHAkGJ+f1tp4xqj0H6maSLTX3PR1HYAQFx0uh4qe+2eWchCWYU942ydEvafVQ8g==", "ba5523a3-eeea-446c-b25a-43dafcd3ace6" });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.RenameColumn(
+                name: "EmployeeId",
                 table: "LeaveAllocations",
                 newName: "EmployeedId");
-
-            migrationBuilder.AddColumn<int>(
-                name: "Period",
-                table: "LeaveAllocations",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
@@ -47,46 +76,6 @@ namespace LeaveManagement.Web.Data.Migrations
                 keyValue: "8d17e2d8-e406-4dcb-caac-0bc47c803830",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
                 values: new object[] { "7e517825-eeec-4385-a2f4-d5c2476ff254", "AQAAAAEAACcQAAAAEPo4vDp2cIY705KNpTUDNDlVLVndo1xBDOCFBHMZEQfN/ZkyIAmXsW6AtSFScd846A==", "54956992-f7d5-464b-b4ef-3487b2cfa052" });
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "Period",
-                table: "LeaveAllocations");
-
-            migrationBuilder.RenameColumn(
-                name: "EmployeedId",
-                table: "LeaveAllocations",
-                newName: "EmployeddId");
-
-            migrationBuilder.UpdateData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "5d17e2d8-e406-4dcc-964e-0bc47c803830",
-                column: "ConcurrencyStamp",
-                value: "430f25a2-f8bc-47a1-9f93-e1a500252bf8");
-
-            migrationBuilder.UpdateData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "8d17e4d8-e409-4dcb-964e-0bc47dd03830",
-                column: "ConcurrencyStamp",
-                value: "ce2993d9-1600-4dbe-9a5f-448185ec01a1");
-
-            migrationBuilder.UpdateData(
-                table: "AspNetUsers",
-                keyColumn: "Id",
-                keyValue: "8d17e2d8-e406-4dcb-964e-0bc47c803830",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "ad2413ab-6f5e-45c8-afbf-d408d087d8bb", "AQAAAAEAACcQAAAAEFO7h58K8uDO95c8m/9Z7RJaPfXayZ2RApf6+2rRliN0XqOQB8CQlrVfzkPJt3QyUA==", "012961e0-6fcc-4091-927d-317ead2722cb" });
-
-            migrationBuilder.UpdateData(
-                table: "AspNetUsers",
-                keyColumn: "Id",
-                keyValue: "8d17e2d8-e406-4dcb-caac-0bc47c803830",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "d77e2a86-0c0a-446e-9fe6-3036d3462a72", "AQAAAAEAACcQAAAAEHjbTH7hDb+tpYJWdocU1TQQZNAPFpGPimmDlpWVGP6ulK/miUEK2+BPPFj3/s5BYw==", "f5bedf89-a7b8-466f-8142-4ee09fe4f50e" });
         }
     }
 }
