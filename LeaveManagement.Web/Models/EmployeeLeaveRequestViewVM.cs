@@ -9,6 +9,5 @@
         }
         public List<LeaveAllocationVM> LeaveAllocations { get; set; }
         public List<LeaveRequestVM> LeaveRequests { get; set; }
-
     }
 }
